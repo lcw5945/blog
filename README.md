@@ -58,6 +58,11 @@ rz  //上传文件到linux 需要安装lrzsz 软件
 cat //查看当前文件内容  
 touch filename //新建文件
 vim filename // 编辑当前文件，进入后按下 i  开始编辑, 退出 esc 键后，输入 :wq  退出保存  或者  :q 退出 ，  只读模式文件保存 :w!  然后:q
+alias //设置别名 长久有效设置方式是编辑.bashrc文件
+//root用户：/root/.bashrc
+//cary用户：/home/cary/.bashrc
+//vim .bashrc
+// alias pulljsdev='git --git-dir=/home/work-develop/git/starway-js-web/.git --work-tree=//home/work-develop/git/starway-js-web pull origin dev'
 ```
 
 ` ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同不的链接，这个命令最常用的参数是-s，具体用法是：ln –s 源文件 目标文件。
@@ -65,3 +70,4 @@ vim filename // 编辑当前文件，进入后按下 i  开始编辑, 退出 esc
 　　-s 是代号（symbolic）的意思。
 　　这里有两点要注意：第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；第二，ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。
 `
+
