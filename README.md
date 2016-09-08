@@ -55,6 +55,9 @@ ls //查看当前目录下文件和目录
 mv oldfile|dir newfile|dir  //移动文件或目录  或者 重命名文件或目录
 yum install sofename  // 安装软件 (lrzsz 上传到linux 软件)
 rz  //上传文件到linux 需要安装lrzsz 软件
+cat //查看当前文件内容  
+touch filename //新建文件
+vim filename // 编辑当前文件，进入后按下 i  开始编辑, 退出 esc 键后，输入 :wq  退出保存  或者  :q 退出 ，  只读模式文件保存 :w!  然后:q
 ```
 
 ` ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同不的链接，这个命令最常用的参数是-s，具体用法是：ln –s 源文件 目标文件。
