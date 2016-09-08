@@ -19,6 +19,8 @@ ln -s /home/programFiles/nodejs/bin/node /usr/local/bin/node
 ln -s /home/programFiles/nodejs/bin/npm /usr/local/bin/npm
 ```
 
+`注意：如果移动软件或者别的原因 造成bin目录下node或者npm一闪一闪，先删除全局，重新设置`
+
 查看安装好的全局node 和npm
 
 ```
@@ -54,5 +56,4 @@ mv oldfile|dir newfile|dir  //移动文件或目录  或者 重命名文件或�
 yum install sofename  // 安装软件 (lrzsz 上传到linux 软件)
 rz  //上传文件到linux 需要安装lrzsz 软件
 ```
-
 
