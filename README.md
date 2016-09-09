@@ -68,6 +68,11 @@ cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy
 scp //主要是在不同的Linux系统之间来回copy文件 
 ```
 
+设置alise
+
+进入root目录  `cd ~`
+打开.bashrc   `vim .bashrc`
+
 脚本中使用alise 
 
 ```
