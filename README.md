@@ -67,6 +67,15 @@ chmod +x filename.sh  // 加入可执行sh命令 以后运行脚本用这个方�
 
 ```
 
+脚本中使用alise 
+
+```
+#!/bin/bash –login
+shopt -s expand_aliases  //开启alise使用
+pulljsdev
+```
+
+
 ` ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同不的链接，这个命令最常用的参数是-s，具体用法是：ln –s 源文件 目标文件。
 　　当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。例如：ln –s /bin/less /usr/local/bin/less
 　　-s 是代号（symbolic）的意思。
