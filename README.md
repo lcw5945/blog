@@ -64,6 +64,9 @@ alias //设置别名 长久有效设置方式是编辑.bashrc文件
 //vim .bashrc
 // alias pulljsdev='git --git-dir=/home/work-develop/git/starway-js-web/.git --work-tree=/home/work-develop/git/starway-js-web pull origin dev'
 chmod +x filename.sh  // 加入可执行sh命令 以后运行脚本用这个方式  ./filename.sh  也可以直接运行 bin/sh filename.sh
+//+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限
+//r:只读,w:写,x执行
+
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
 scp //主要是在不同的Linux系统之间来回copy文件 
 ```
