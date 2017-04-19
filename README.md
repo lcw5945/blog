@@ -69,6 +69,11 @@ chmod +x filename.sh  // 加入可执行sh命令 以后运行脚本用这个方�
 
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
 scp //主要是在不同的Linux系统之间来回copy文件 
+uname -r  //查看系统版本
+lsb_release -a //查看系统发行版本
+ps -ef | grep name  //查看name 进程
+
+
 ```
 
 设置alise
