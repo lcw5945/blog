@@ -72,7 +72,7 @@ scp //主要是在不同的Linux系统之间来回copy文件
 uname -r  //查看系统版本
 lsb_release -a //查看系统发行版本
 ps -ef | grep name  //查看name 进程
-netstat   -anp   |   grep  portno（例如：netstat –apn | grep 80）
+netstat   -anp | grep  portno（例如：netstat –apn | grep 80）
 
 ****Firewall*****
 CentOS 6:
@@ -151,4 +151,18 @@ scp -r /home/space/music/ www.cumt.edu.cn:/home/root/others/
 　　-s 是代号（symbolic）的意思。
 　　这里有两点要注意：第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；第二，ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。
 
+Nginx 配置
+```
+server {
+    listen       80 ;
+    server_name  gitlib.hefantv.com;
+    location / {
+                proxy_pass http://127.0.0.1:9090; 
+        }
+    access_log  /data/log/nginx/static.log json;
+}
+```
 
+``` js
+    ./nginx -s reload  //修改配置文件重启
+``` 
