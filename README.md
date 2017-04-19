@@ -72,7 +72,28 @@ scp //主要是在不同的Linux系统之间来回copy文件
 uname -r  //查看系统版本
 lsb_release -a //查看系统发行版本
 ps -ef | grep name  //查看name 进程
+netstat   -anp   |   grep  portno（例如：netstat –apn | grep 80）
 
+****Firewall*****
+CentOS 6:
+
+1） 永久性生效，重启后不会复原
+
+开启： chkconfig iptables on
+
+关闭： chkconfig iptables off
+
+2） 即时生效，重启后复原
+
+开启： service iptables start
+
+关闭： service iptables stop
+
+CentOS 7:
+
+systemctl start firewalld.service#启动firewall
+systemctl stop firewalld.service#停止firewall
+systemctl disable firewalld.service#禁止firewall开机启动
 
 ```
 
