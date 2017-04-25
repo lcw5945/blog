@@ -55,7 +55,8 @@ ls //查看当前目录下文件和目录
 mv oldfile|dir newfile|dir  //移动文件或目录  或者 重命名文件或目录
 yum install sofename  // 安装软件 (lrzsz 上传到linux 软件)
 rz  //上传文件到linux 需要安装lrzsz 软件
-cat //查看当前文件内容  
+sz   sz filename //下载linux文件到 windows 下载位置在终端download里设置
+cat //查看当前文件内容   
 touch filename //新建文件
 vim filename // 编辑当前文件，进入后按下 i  开始编辑, 退出 esc 键后，输入 :wq  退出保存  或者  :q 退出 ，  只读模式文件保存 :w!  然后:q
 alias //设置别名 长久有效设置方式是编辑.bashrc文件
@@ -69,6 +70,13 @@ chmod +x filename.sh  // 加入可执行sh命令 以后运行脚本用这个方�
 
 chown -R lichunwei.  目录 --设置用户拥有目录
 
+ssh-keygen -C "name" 生成sshkey
+~/.ssh 下 authorized_keys 是ssh连接的认证文件
+/etc/sysconfig/iptables  防火墙端口配置文件
+/etc/ssh/sshd.config  ssh配置文件  
+/etc/init.d  系统启动配置文件
+echo $LANG  查看系统语言
+/etc/sysconfig/i18n  系统语言配置文件
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
 scp //主要是在不同的Linux系统之间来回copy文件 
 uname -r  //查看系统版本
@@ -168,3 +176,10 @@ server {
 ``` js
     ./nginx -s reload  //修改配置文件重启
 ``` 
+
+GitLab 配置
+
+```js
+  /etc/gitlab/gitlab.rb gitlab 配置
+  sudo gitlab-ctl reconfigure  重启
+```
