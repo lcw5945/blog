@@ -177,6 +177,32 @@ server {
     ./nginx -s reload  //修改配置文件重启
 ``` 
 
+ERR_CONTENT_LENGTH_MISMATCH 错误
+查看 /usr/local/app/nginx/logs/error.log  错误指向 /data/log/nginx/error.log 打开
+```js
+2017/04/25 15:27:07 [crit] 12710#0: *18611 open() "/usr/local/app/nginx/proxy//3/04/0000000043" failed (13: Permission denied) while reading upstream, client: 114.248.125.112, server: testhyrp.hefantv.com, request: "GET /img/index/bg.png HTTP/1.1", upstream: "http://127.0.0.1:9007/img/index/bg.png", host: "testhyrp.hefantv.com"
+```
+说明是Nginx 没有权限读取/usr/local/app/nginx/proxy 目录
+ps ngxin进程
+```js
+root      1122  1120  0 Apr21 ?        00:00:00 svlogd -tt /var/log/gitlab/nginx
+root      3271     1  0 Apr21 ?        00:00:00 nginx: master process /usr/local/app/nginx/sbin/nginx
+nginx    12707  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12708  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12709  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12710  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12711  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12712  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12713  3271  0 14:21 ?        00:00:00 nginx: worker process          
+nginx    12714  3271  0 14:21 ?        00:00:00 nginx: worker process 
+```
+
+master主进程是root 用户 其他是Nginx用户 所有要设置Nginx用目录权限
+
+```
+chown -R nginx /usr/local/app/nginx/proxy
+```
+
 GitLab 配置
 
 ```js
