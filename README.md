@@ -3,6 +3,18 @@ node text
 
 ## linux
 
+ssh远程登录
+
+```js
+ssh -p port name@ip  //默认port 22
+~ -> ctrl+z  // 退出远程主机 返回上一个主机 先输入~  然后在输入 ctrl + z
+jobs  查看后台运行的远程主机
+fg %1 再回到远程主机
+ssh-copy-id user@host 复制SSH密钥到目标主机，开启无密码SSH登录 如果还没有密钥，请使用ssh-keygen命令生成
+ssh -N -L2001:localhost:80 somemachine 从某主机的80端口开启到本地主机2001端口的隧道
+
+```
+
 >nodejs npm gulp webpack install
 
 ``` js 
