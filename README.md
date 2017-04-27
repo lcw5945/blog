@@ -58,6 +58,7 @@ ln -s /home/programFiles/nodejs/bin/webpack /usr/local/bin/webpack
 
 ``` js 
 rm -f|-rf file|dir  //移除文件或目录  -f 强制删除  -rf 强制删除递归子目录
+find . -type f -cmin +10 -name '*.html' -exec rm {} \;  删除10分钟之内变动的 意.html 结尾的文件
 cd ~ //进入root目录
 cd / //进入根目录
 cd .. //返回上级目录
