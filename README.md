@@ -49,6 +49,12 @@ rm -f|-rf file|dir  //移除文件或目录  -f 强制删除  -rf 强制删除�
 cd ~ //进入root目录
 cd / //进入根目录
 cd .. //返回上级目录
+cd - //返回之前的目录
+pushd dirname //将目录dirname压入目录堆栈，并进入目录dirname
+dirs -v  // 显示当前堆栈目录信息
+pushed //在堆栈最上层2个目录切换
+pushd +n //进入 dirs -v 显示索引值得目录
+popd //删除堆栈目录最上层目录
 pwd // 查看目录当前的路径
 ll  //查看当前目录内容详细信息
 ls //查看当前目录下文件和目录
@@ -65,6 +71,7 @@ alias //设置别名 长久有效设置方式是编辑.bashrc文件
 //vim .bashrc
 // alias pulljsdev='git --git-dir=/home/work-develop/git/starway-js-web/.git --work-tree=/home/work-develop/git/starway-js-web pull origin dev'
 chmod +x filename.sh  // 加入可执行sh命令 以后运行脚本用这个方式  ./filename.sh  也可以直接运行 bin/sh filename.sh
+chmod a+x filname.sh  // 所有用户组拥有可执行此文件权限
 //+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限
 //r:只读,w:写,x执行
 
@@ -77,6 +84,8 @@ ssh-keygen -C "name" 生成sshkey
 /etc/init.d  系统启动配置文件
 echo $LANG  查看系统语言
 /etc/sysconfig/i18n  系统语言配置文件
+/etc/bashrc  对所有用户有效的
+~/.bashrc  只对当前用户有效
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
 scp //主要是在不同的Linux系统之间来回copy文件 
 uname -r  //查看系统版本
