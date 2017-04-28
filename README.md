@@ -97,7 +97,9 @@ chmod a+x filname.sh  // 所有用户组拥有可执行此文件权限
 //+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限
 //r:只读,w:写,x执行
 
-chown -R lichunwei.  目录 --设置用户拥有目录
+chown -R lichunwei.  目录 --设置用户拥有目录包括子目录 -R
+chown -R :h5 git   更改目录拥有组 包括子目录
+chmod -R 771 git   更改权限 用户和用户组 拥有读写执行权限 其他用户拥有执行权限
 
 ssh-keygen -C "name" 生成sshkey
 ~/.ssh 下 authorized_keys 是ssh连接的认证文件
