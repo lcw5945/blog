@@ -13,6 +13,14 @@ fg %1 再回到远程主机
 ssh-copy-id user@host 复制SSH密钥到目标主机，开启无密码SSH登录 如果还没有密钥，请使用ssh-keygen命令生成
 ssh -N -L2001:localhost:80 somemachine 从某主机的80端口开启到本地主机2001端口的隧道
 
+useradd -p passwd username   添加用户
+su username
+ssh-keygen -C "youname"
+cd ~/.ssh
+touch authorized_keys  客户端id_rsa.pub 黏贴上
+chmod 644 authorized_keys
+chmod 700 ../.ssh
+
 ```
 
 >nodejs npm gulp webpack install
