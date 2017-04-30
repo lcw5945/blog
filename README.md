@@ -112,6 +112,8 @@ echo $LANG  查看系统语言
 ~/.bashrc  只对当前用户有效
 /etc/rc.d/rc.local . //开机启动配置
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
+cp -r dir1 dir2     //dir1 复制到dir2 内
+cp -r dir1/. dir2  //复制dir1 内的内容到dir2
 scp //主要是在不同的Linux系统之间来回copy文件 
 scp -P port file name@ip:dir 
 uname -r  //查看系统版本
