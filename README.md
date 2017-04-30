@@ -237,7 +237,12 @@ master主进程是root 用户 其他是Nginx用户 所有要设置Nginx用目录
 ```
 chown -R nginx /usr/local/app/nginx/proxy
 ```
+Mongodb 配置
 
+``` js
+./mongod --dbpath /usr/local/app/mongodb/data/mongodb/db --port 28017 --logpath /usr/local/app/mongodb/data/mongodb/log //链接数据库  rc.d/rc.local 加入到开机配置
+./mongo --port 28017  //进入数据库
+```
 GitLab 配置
 
 ```js
