@@ -241,7 +241,34 @@ Mongodb 配置
 
 ``` js
 ./mongod --dbpath /usr/local/app/mongodb/data/mongodb/db --port 28017 --logpath /usr/local/app/mongodb/data/mongodb/log //链接数据库  rc.d/rc.local 加入到开机配置
-./mongo --port 28017  //进入数据库
+./mongo --port 28017  //进入数据库 显示shell 版本 ⚠️看是否和db版本一致 db.version()
+
+db.help() 
+use admin  //使用admin db
+show dbs
+show collections
+show users
+
+db.createrUser //http://docs.mongoing.com/manual-zh/reference/method/db.createUser.html
+
+{
+	user : "admin",
+ pwd: 'passwordk'
+	roles : [
+		{
+			role : "userAdminAnyDatabase", //root , readWrite, read
+			db : "admin"  //指定数据库
+		}
+	]
+}
+
+./mongod --dbpath /usr/local/app/mongodb/data/mongodb/db --port 28017 --logpath /usr/local/app/mongodb/data/mongodb/log --fork --auth  //设置后台运行，设置认证
+
+db.auth('root', 'pwd') //mongo是关联的 要用root操作别的库的user 要 use admin -> auth root --> use tdb
+
+mongodb://username:pwd@ip:port/dbname
+
+
 ```
 GitLab 配置
 
