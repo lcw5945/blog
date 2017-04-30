@@ -110,6 +110,7 @@ echo $LANG  查看系统语言
 /etc/sysconfig/i18n  系统语言配置文件
 /etc/bashrc  对所有用户有效的
 ~/.bashrc  只对当前用户有效
+/etc/rc.d/rc.local . //开机启动配置
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
 scp //主要是在不同的Linux系统之间来回copy文件 
 scp -P port file name@ip:dir 
