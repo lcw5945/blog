@@ -272,9 +272,37 @@ mongodb://username:pwd@ip:port/dbname
 
 
 ```
-GitLab 配置
+###GitLab 配置
 
 ```js
   /etc/gitlab/gitlab.rb gitlab 配置
   sudo gitlab-ctl reconfigure  重启
+```
+
+###Jenkins 配置
+
+```
+$ sudo vim /etc/sysconfig/jenkins
+# 修改启动用户为root,默认为jenkins
+JENKINS_USER="root"
+# 修改运行端口为9999，默认为8080
+JENKINS_PORT="9999"
+```
+
+启动Jenkins
+
+```
+service jenkins start 
+```
+如果报java错误 注意配置java环境变量，然后修改/etc/init.d/jenkins --> /usr/java/bin/java
+```
+# Search usable Java as /usr/bin/java might not point to minimal version required by Jenkins.
+# see http://www.nabble.com/guinea-pigs-wanted-----Hudson-RPM-for-RedHat-Linux-td25673707.html
+candidates="
+/etc/alternatives/java
+/usr/lib/jvm/java-1.8.0/bin/java
+/usr/lib/jvm/jre-1.8.0/bin/java
+/usr/lib/jvm/java-1.7.0/bin/java
+/usr/lib/jvm/jre-1.7.0/bin/java
+/usr/java/bin/java
 ```
