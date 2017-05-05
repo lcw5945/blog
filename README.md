@@ -306,3 +306,7 @@ candidates="
 /usr/lib/jvm/jre-1.7.0/bin/java
 /usr/java/bin/java
 ```
+```
+/var/lib/jenkins/workspace  //项目工作空间
+/var/lib/jenkins/user  // 用户目录
+```
