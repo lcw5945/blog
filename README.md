@@ -241,6 +241,22 @@ master主进程是root 用户 其他是Nginx用户 所有要设置Nginx用目录
 ```
 chown -R nginx /usr/local/app/nginx/proxy
 ```
+
+```
+location匹配命令
+
+~      #波浪线表示执行一个正则匹配，区分大小写
+~*    #表示执行一个正则匹配，不区分大小写
+^~    #^~表示普通字符匹配，如果该选项匹配，只匹配该选项，不匹配别的选项，一般用来匹配目录
+=      #进行普通字符精确匹配
+@     #"@" 定义一个命名的 location，使用在内部定向时，例如 error_page, try_files
+location ^~ ^/t/ {
+     root /www/root/html/;  如果一个请求的URI是/t/a.html时，web服务器将会返回服务器上的/www/root/html/t/a.html的文件
+}
+location ^~ ^/t/ {
+ alias /www/root/html/new_t/; 如果一个请求的URI是/t/a.html时，web服务器将会返回服务器上的/www/root/html/new_t/a.html的文件
+}
+```
 Mongodb 配置
 
 ``` js
