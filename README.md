@@ -279,6 +279,20 @@ mongodb://username:pwd@ip:port/dbname
 ```js
   /etc/gitlab/gitlab.rb gitlab 配置
   sudo gitlab-ctl reconfigure  重启
+  gitlab-rake gitlab:backup:create 备份数据 生成到目录- /var/opt/gitlab/backups
+  crontab -e   添加定时任务
+  0 5 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create  每天5点备份gitlab数据
+  
+  #数据恢复
+  # 停止相关数据连接服务
+  gitlab-ctl stop unicorn 
+  gitlab-ctl stop sidekiq 
+
+  # 从1393513186编号备份中恢复 
+  gitlab-rake gitlab:backup:restore BACKUP=1466811825
+
+  # 启动
+  Gitlab sudo gitlab-ctl start
 ```
 
 ###Jenkins 配置
