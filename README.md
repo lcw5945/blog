@@ -288,6 +288,13 @@ db.auth('root', 'pwd') //mongo是关联的 要用root操作别的库的user 要 
 
 mongodb://username:pwd@ip:port/dbname
 
+新建数据库 并创建用户
+1. use admin
+2. db.auth('root', 'hefantv.123')  认证root
+3. use apiDB    切换到apiDB数据库
+4. db.testCON.insert({'name': '1'})  先在testCON 集合插入一条数据 apiDB才会生效
+5. show dbs
+6. db.createUser({"user" : "admin", "pwd" : "hefantv.123","roles" : [{"role" : "readWrite", "db" : "api"} ]}) 创建读写用户
 
 ```
 ###GitLab 配置
