@@ -87,6 +87,7 @@ sz   sz filename //下载linux文件到 windows 下载位置在终端download�
 cat //查看当前文件内容   
 touch filename //新建文件
 vim filename // 编辑当前文件，进入后按下 i  开始编辑, 退出 esc 键后，输入 :wq  退出保存  或者  :q 退出 ，  只读模式文件保存 :w!  然后:q
+vi 闪退为保存文件会生成.name.swap 文件, 删除即可
 alias //设置别名 长久有效设置方式是编辑.bashrc文件
 //root用户：/root/.bashrc
 //cary用户：/home/cary/.bashrc
