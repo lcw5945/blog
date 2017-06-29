@@ -279,6 +279,10 @@ Mongodb 配置
 ``` js
 配置开机启动-->  rc.d/rc.local 加入到开机配置
 /usr/local/app/mongodb/bin/mongod --dbpath /usr/local/app/mongodb/data/mongodb/db --port 28017 --logpath /usr/local/app/mongodb/data/mongodb/log  --fork --auth 
+
+进入数据
+su root
+cd /usr/local/app/mongodb/bin
 ./mongo --port 28017  //进入数据库 显示shell 版本 ⚠️看是否和db版本一致 db.version()
 
 db.help() 
