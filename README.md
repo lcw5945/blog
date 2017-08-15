@@ -140,6 +140,9 @@ export PATH
 ****Firewall*****
 CentOS 6:
 
+vi /etc/sysconfig/iptables
+service iptables restart
+
 1） 永久性生效，重启后不会复原
 
 开启： chkconfig iptables on
