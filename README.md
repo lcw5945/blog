@@ -157,6 +157,10 @@ service iptables restart
 
 CentOS 7:
 
+iptables:
+systemctl restart iptables
+
+firewall:
 systemctl start firewalld.service#启动firewall
 systemctl stop firewalld.service#停止firewall
 systemctl disable firewalld.service#禁止firewall开机启动
