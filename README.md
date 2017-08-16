@@ -321,6 +321,17 @@ mongodb://username:pwd@ip:port/dbname
 5. show dbs
 6. db.createUser({"user" : "admin", "pwd" : "hefantv.123","roles" : [{"role" : "readWrite", "db" : "api"} ]}) 创建读写用户
 
+导出数据库
+
+./bin/mongoexport --port 28017 -d apidoc-dev -c databases -o /data/db/databases.json -u admin -p hefantv.123 
+./bin/mongoexport --port 28017 -d apidoc-dev -c fields -o /data/db/fields.json -u admin -p hefantv.123
+./bin/mongoexport --port 28017 -d apidoc-dev -c groups -o /data/db/groups.json -u admin -p hefantv.123
+./bin/mongoexport --port 28017 -d apidoc-dev -c interfaces -o /data/db/interfaces.json -u admin -p hefantv.123
+./bin/mongoexport --port 28017 -d apidoc-dev -c projects -o /data/db/projects.json -u admin -p hefantv.123
+./bin/mongoexport --port 28017 -d apidoc-dev -c statecodes -o /data/db/statecodes.json -u admin -p hefantv.123
+./bin/mongoexport --port 28017 -d apidoc-dev -c testenvs -o /data/db/testenvs.json -u admin -p hefantv.123
+./bin/mongoexport --port 28017 -d apidoc-dev -c users -o /data/db/users.json -u admin -p hefantv.123
+
 ```
 ###GitLab 配置
 
