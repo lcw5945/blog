@@ -332,6 +332,15 @@ mongodb://username:pwd@ip:port/dbname
 ./bin/mongoexport --port 28017 -d apidoc-dev -c testenvs -o /data/db/testenvs.json -u admin -p hefantv.123
 ./bin/mongoexport --port 28017 -d apidoc-dev -c users -o /data/db/users.json -u admin -p hefantv.123
 
+./bin/mongoimport --port 28017 -d apidoc-test -c databases /data/db/database.json -u admin -p hefantv.123 
+./bin/mongoimport --port 28017 -d apidoc-test -c fields  /data/db/fields.json -u admin -p hefantv.123
+./bin/mongoimport --port 28017 -d apidoc-test -c groups  /data/db/groups.json -u admin -p hefantv.123
+./bin/mongoimport --port 28017 -d apidoc-test -c interfaces  /data/db/interfaces.json -u admin -p hefantv.123
+./bin/mongoimport --port 28017 -d apidoc-test -c projects  /data/db/projects.json -u admin -p hefantv.123
+./bin/mongoimport --port 28017 -d apidoc-test -c statecodes /data/db/statecodes.json -u admin -p hefantv.123
+./bin/mongoimport --port 28017 -d apidoc-test -c testenvs  /data/db/testenvs.json -u admin -p hefantv.123
+./bin/mongoimport --port 28017 -d apidoc-test -c users /data/db/users.json -u admin -p hefantv.123
+
 ```
 ###GitLab 配置
 
