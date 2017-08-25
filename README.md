@@ -365,6 +365,9 @@ mongodb://username:pwd@ip:port/dbname
 ```
 ### GitLab 配置
 
+* 下载
+https://www.gitlab.com.cn/installation/
+
 ```js
   /etc/gitlab/gitlab.rb gitlab 配置
   sudo gitlab-ctl reconfigure  重启
