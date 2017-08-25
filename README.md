@@ -313,6 +313,82 @@ http {
 }
 ```
 
+* testerh5
+```
+server {
+        listen       80;
+        server_name  testerh5.hefantv.com;
+        add_header Access-Control-Allow-Origin *;
+        add_header Access-Control-Allow-Headers X-Requested-With;
+        add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
+
+        index  index.html index.htm;
+        root /data/web/nginx/testerh5;
+
+        rewrite "^/hefantv/(.*)$" http://testerstatic.hefantv.com/hefantv/$1 break;
+        #rewrite "^/club/outs/rougeshower/(.*)$" http://testerh5.hefantv.com/club/outs/rougeshower/index.html break;
+
+        location =/ {
+        index  index.html index.htm;
+        root /data/web/nginx/testerh5;
+        }
+
+        location ~* ^/wap {
+            index       index.html index.htm;
+            root        /data/web/nginx/testerh5;
+        }
+
+        location ~* ^/club {
+            index       index.html index.htm;
+            root        /data/web/nginx/testerh5;
+        }
+
+       location  ^~ /club/outs/rougeshower  {
+            try_files $uri $uri/ /club/outs/rougeshower/index.html;
+       }
+
+       location  ^~ /club/outs/fighter  {
+            try_files $uri $uri/ /club/outs/fighter/index.html;
+       }
+
+       location @rs {
+            rewrite ^/(.*)$ http://testerh5.hefantv.com/club/outs/rougeshower;  
+       }
+
+      
+
+        location ~* .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css|woff|eot|svg|mp4|mp3|TTF)$ {
+            index  index.html index.htm;
+            root /data/web/nginx/testerh5;
+#           expires      7d;
+            }
+
+        location ~ .*\.(json)$  {
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_pass http://testerstatic.hefantv.com;
+
+          }
+
+        location ~* .*$ {
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_pass http://testerapi.hefantv.com;
+
+          }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+    access_log  /data/log/nginx/testerh5.log json;
+
+}
+```
+
 * proxy
 
 ```
