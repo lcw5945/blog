@@ -221,7 +221,7 @@ scp -r /home/space/music/ www.cumt.edu.cn:/home/root/others/
 　　-s 是代号（symbolic）的意思。
 　　这里有两点要注意：第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；第二，ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。
 
-##Nginx 配置
+### Nginx 配置
 ```
 server {
     listen       80 ;
@@ -280,7 +280,24 @@ location ^~ ^/t/ {
  alias /www/root/html/new_t/; 如果一个请求的URI是/t/a.html时，web服务器将会返回服务器上的/www/root/html/new_t/a.html的文件
 }
 ```
-Mongodb 配置
+#### vue router
+
+```js
+const router = new VueRouter({
+        mode: 'history',
+        base: '/outs/fighter/',
+```	
+
+nginx
+
+```js 
+location  ^~ /club/outs/fighter  {
+            try_files $uri $uri/ /club/outs/fighter/index.html;
+       }
+```
+	
+
+### Mongodb 配置
 
 
 ``` js
@@ -346,7 +363,7 @@ mongodb://username:pwd@ip:port/dbname
 ./bin/mongoimport --port 28017 -d apidoc-test -c users /data/db/users.json -u admin -p hefantv.123
 
 ```
-###GitLab 配置
+### GitLab 配置
 
 ```js
   /etc/gitlab/gitlab.rb gitlab 配置
@@ -367,7 +384,7 @@ mongodb://username:pwd@ip:port/dbname
   Gitlab sudo gitlab-ctl start
 ```
 
-###Jenkins 配置
+### Jenkins 配置
 
 ```
 $ sudo vim /etc/sysconfig/jenkins
