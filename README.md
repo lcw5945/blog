@@ -222,6 +222,99 @@ scp -r /home/space/music/ www.cumt.edu.cn:/home/root/others/
 　　这里有两点要注意：第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；第二，ln的链接又 软链接和硬链接两种，软链接就是ln –s ** **，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln ** **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。
 
 ### Nginx 配置
+
+* nginx.conf
+```
+worker_processes     8;
+worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000;
+
+error_log  /data/log/nginx/error.log;
+
+events {
+    worker_connections  8024;
+        }
+
+http {
+    include  mime.types;
+    default_type application/octet-stream;
+    fastcgi_intercept_errors on;
+    charset utf-8;
+    server_names_hash_bucket_size 128;
+    client_header_buffer_size 4k;
+    large_client_header_buffers 4 32k;
+    client_max_body_size 300m;
+    sendfile on;
+    tcp_nopush  on;
+    keepalive_timeout 60;
+    tcp_nodelay on;
+    client_body_buffer_size 512k;
+    server_tokens off;
+
+    proxy_headers_hash_max_size 51200;
+    proxy_headers_hash_bucket_size 6400;
+    proxy_set_header   Host             $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    proxy_next_upstream error timeout invalid_header http_502 http_504;
+    proxy_connect_timeout 300; #5
+    proxy_read_timeout  120; #60
+    proxy_send_timeout  10; #5
+    proxy_buffer_size  16k;
+    proxy_buffers   4 64k;
+    proxy_busy_buffers_size 128k;
+    proxy_temp_file_write_size 128k;
+
+    map $uri  $newuri {
+        ~^.*appVer\x22:\x22(?<androidver>.*).*$    $androidver;
+    }
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers  4 16k;
+    gzip_http_version 1.1;
+    gzip_comp_level 2;
+    #gzip_types  text/plain application/x-javascript text/css application/xml;
+    gzip_types text/plain application/x-javascript text/css application/xml application/javascript  text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+    gzip_vary on;
+
+#    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+#                      '$status $body_bytes_sent "$http_referer" '
+#                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+#    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+#                  '$status $body_bytes_sent "$http_referer" '
+#                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    log_format json '{"@timestamp":"$time_iso8601",'
+        '"host":"$server_addr",'
+        '"clientip":"$remote_addr",'
+        '"size":$body_bytes_sent,'
+        '"responsetime":$request_time,'
+        '"upstreamtime":"$upstream_response_time",'
+        '"upstreamhost":"$upstream_addr",'
+        '"http_host":"$host",'
+        '"url":"$uri",'
+        '"domain":"$host",'
+        '"xff":"$http_x_forwarded_for",'
+        '"referer":"$http_referer",'
+        '"agent":"$http_user_agent",'
+        '"status":"$status"}';
+    access_log  /data/log/nginx/host.access.log  json;
+
+    server {
+        listen       80  default_server;
+        server_name  _;
+        return       444;
+        access_log  on;
+    }
+
+
+    include /usr/local/app/nginx/conf/vhosts/*.conf;
+}
+```
+
+* proxy
+
 ```
 server {
     listen       80 ;
