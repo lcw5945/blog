@@ -405,6 +405,41 @@ server {
 }
 ```
 
+* hyreal.conf
+
+```
+upstream realserver {
+    server 127.0.0.1:9008;
+    keepalive 64;
+}
+
+
+server {
+    listen 80;
+    server_name testhyrs.b2social.cn;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host  $http_host;
+        proxy_set_header X-Nginx-Proxy true;
+        proxy_set_header Connection "";
+        proxy_pass   http://realserver;
+
+    }
+
+    location ^~ /img/ {
+        proxy_set_header Host  $http_host;
+        proxy_set_header X-Nginx-Proxy true;
+        proxy_set_header Connection "";
+        rewrite /img/(.*) /api/connector?command=QuickOutput&type=Images&file=$1 break;
+        proxy_pass   http://realserver;
+   } 
+
+}
+
+```
+
 ``` js
     ./nginx -s reload  //修改配置文件重启
     ./sbin/nginx -t  //配置文件是否正确 
