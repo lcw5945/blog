@@ -398,3 +398,18 @@ candidates="
 /var/lib/jenkins/workspace  //项目工作空间
 /var/lib/jenkins/user  // 用户目录
 ```
+
+### nvm
+windows nvm -->https://github.com/coreybutler/nvm-windows
+
+淘宝镜像
+
+```js
+
+nvm node_mirror https://npm.taobao.org/mirrors/node/
+nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+
+
+
+ps: C:\Users\Administrator\AppData\Roaming\nvm
+```
