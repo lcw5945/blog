@@ -393,12 +393,15 @@ server {
 
 ```
 server {
-    listen       80 ;
-    server_name  gitlib.hefantv.com;
-    location / {
-                proxy_pass http://127.0.0.1:9090; 
+        listen       80 ;
+        server_name  testapidoc.hefantv.com;
+        location / {
+                proxy_set_header  X-Real-IP  $remote_addr;
+                proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-For $remote_addr;
+                proxy_pass http://127.0.0.1:9013; 
         }
-    access_log  /data/log/nginx/static.log json;
+        access_log  /data/log/nginx/h5apidoc.log json;
 }
 ```
 
