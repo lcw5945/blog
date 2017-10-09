@@ -1,0 +1,33 @@
+#!/bin/bash
+VERSION=""
+while getopts "v:" arg #选项后面的冒号表示该选项需要参数
+do
+        case $arg in
+             v)
+                VERSION=$OPTARG
+                ;;
+             ?)  #当有不认识的选项的时候arg为?
+            echo "含有未知参数"
+        exit 1
+        ;;
+        esac
+done
+
+echo $VERSION
+
+SRC="/data/web/nginx/club/{H5,activity,outs,apiConf.js}"
+DIST="/data/web/nginx/club/$VERSION/"
+
+/usr/bin/expect <<END
+spawn su -
+expect "Password:" {
+    send "PP3F60pp3f60\r"
+}
+expect "*#"
+send "mkdir -p $DIST\r"
+expect "*#"
+send "cp -r $SRC $DIST\r"
+expect "*#"
+send "exit\r"
+interact
+END
