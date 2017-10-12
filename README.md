@@ -640,3 +640,47 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 
 ps: C:\Users\Administrator\AppData\Roaming\nvm
 ```
+### pm2
+
+```js
+
+{
+  "apps" : [{
+    "name"        : "hefantv-tools",
+    "script"      : "./pm/index.js",
+    "watch"       : true,
+    "node_args" : "--harmony",
+    "env": {
+      "NODE_ENV": "development"
+    }   ,
+    "env_testing" : {
+      "NODE_ENV": "testing"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }]
+}
+
+```
+pm2 构建环境时
+1. pm2 start ./pm/ecosystem.json --env testing  //配置文件必须有这部分"env_testing" : { "NODE_ENV": "testing" }
+2. 如果环境不对，删掉进程 pm2 delete num  重新启动
+
+部署：
+
+```js
+deploy : {
+    production : {
+      user: "yishi",
+      host: "123.57.205.23",
+      ref: "origin/master",
+      repo: "git@github.com:e10101/pm2app.git",
+      path: "/home/yishi/www/production",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.json --env production"
+    }
+  }
+  ```
+  
+  启动：
+  pm2 deploy ecosystem.json production setup
