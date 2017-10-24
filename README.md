@@ -123,7 +123,17 @@ uname -r  //查看系统版本
 lsb_release -a //查看系统发行版本
 ps -ef | grep name  //查看name 进程
 netstat   -anp | grep  portno（例如：netstat –apn | grep 80）
-
+ip route show
+-----------------------
+101.200.176.0/22 dev eth1  proto kernel  scope link  src 101.200.178.224 外网ip
+10.44.160.0/21 dev eth0  proto kernel  scope link  src 10.44.166.132  内网ip
+169.254.0.0/16 dev eth0  scope link  metric 1002 
+169.254.0.0/16 dev eth1  scope link  metric 1003 
+172.16.0.0/12 via 10.44.167.247 dev eth0 
+100.64.0.0/10 via 10.44.167.247 dev eth0 
+10.0.0.0/8 via 10.44.167.247 dev eth0 
+default via 101.200.179.247 dev eth1
+-----------------------
 * 环境变量
 方法一：直接运行命令export PATH=$PATH:/usr/local/webserver/php/bin 和 export PATH=$PATH:/usr/local/webserver/mysql/bin
 
