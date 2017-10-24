@@ -12,7 +12,7 @@ jobs  查看后台运行的远程主机
 fg %1 再回到远程主机
 ssh-copy-id user@host 复制SSH密钥到目标主机，开启无密码SSH登录 如果还没有密钥，请使用ssh-keygen命令生成
 ssh -N -L2001:localhost:80 somemachine 从某主机的80端口开启到本地主机2001端口的隧道
-
+ssh -t -p 1922 root@10.26.240.153 "cd /home/node/hefantv_tools_s;pwd;nvm use v6.9.1;cnpm install;npm run build;pm2 restart ./pm/ecosystem.json --env testing"
 useradd -p passwd username   添加用户
 su username
 ssh-keygen -C "youname"
@@ -114,9 +114,11 @@ echo $LANG  查看系统语言
 /etc/rc.d/rc.local . //开机启动配置
 cp  // 主要是用于在同一台电脑上，在不同的目录之间来回copy文件 
 cp -r dir1 dir2     //dir1 复制到dir2 内
-cp -r dir1/. dir2  //复制dir1 内的内容到dir2
+cp -r dir1/. dir2  //复制dir1 内的内容到dir2 包括隐藏文件
+cp -r dir1/* dir2  //复制dir1 内的内容到dir2 不包括隐藏文件
 scp //主要是在不同的Linux系统之间来回copy文件 
-scp -P port file name@ip:dir 
+scp -P port file name@ip:dir   
+scp -P 1922 -r ./. root@60.205.171.6:/home/node/hefantv_tools_s/
 uname -r  //查看系统版本
 lsb_release -a //查看系统发行版本
 ps -ef | grep name  //查看name 进程
