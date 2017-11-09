@@ -582,6 +582,12 @@ mongodb://username:pwd@ip:port/dbname
 ./bin/mongoimport --port 28017 -d apidoc-test -c users /data/db/users.json -u admin -p hefantv.123
 
 ```
+
+数据库备份
+
+./mongodump -h 127.0.0.1 --port 28017 -u username -p pwd  -d apidoc -o /data
+
+
 ### GitLab 配置
 
 * 下载
