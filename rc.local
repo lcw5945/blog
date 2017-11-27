@@ -1,0 +1,14 @@
+/usr/local/app/mongodb/bin/mongod --dbpath /usr/local/app/mongodb/data/mongodb/db --port 28017 --logpath /usr/local/app/mongodb/data/mongodb/log  --fork --auth
+
+#/etc/init.d/logstash start
+
+#node /home/node/hefantv_tools_s/pm/index.js
+#node /home/hefantv/git/hefantv_debug_s/pm/index.js
+#gitlab
+#/opt/gitlab/bin/gitlab-ctl restart
+
+cd /home/node/hefantv_api_s;pm2 restart ./pm/ecosystem.json --env production
+cd /home/node/hefantv_debug_s;pm2 restart ./pm/ecosystem.json --env production
+cd /home/node/hefantv_tools_s;pm2 restart ./pm/ecosystem.json --env production
+/etc/init.d/jenkins start
+/usr/bin/gitlab-ctl start
