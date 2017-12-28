@@ -152,6 +152,9 @@ export PATH
 ****Firewall*****
 CentOS 6:
 
+iptables -L . //查看端口
+
+
 vi /etc/sysconfig/iptables
 service iptables restart
 
