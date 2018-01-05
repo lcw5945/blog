@@ -1,6 +1,35 @@
 ## docker 
 帮助文档地址： https://docs.docker.com/engine/installation/linux/docker-ce/centos/
 
+## install  centos 7
+
+```
+  yum update
+  
+  yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+  
+  yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+    
+  yum install docker-ce  
+  
+  systemctl start docker
+  
+  docker run hello-world
+```
+## Uninstall Docker CE
+
+Uninstall the Docker package:
+
+```
+yum remove docker-ce
+//Images, containers, volumes, or customized configuration files on your host are not automatically removed. To delete all images, containers, and volumes:
+$ sudo rm -rf /var/lib/docker
+```
+
 ##设置镜像
 
 ```
