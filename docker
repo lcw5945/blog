@@ -2,6 +2,7 @@
 帮助文档地址： https://docs.docker.com/engine/installation/linux/docker-ce/centos/
 
 ##设置镜像
+
 ```
 sudo mkdir -p /etc/docker
 sudo vi /etc/docker/daemon.json 
@@ -12,6 +13,7 @@ sudo vi /etc/docker/daemon.json
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+
 ```
 
 容器生命周期管理 —  `docker [run|start|stop|restart|kill|rm|pause|unpause]`
