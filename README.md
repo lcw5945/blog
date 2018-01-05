@@ -123,6 +123,7 @@ uname -r  //查看系统版本
 lsb_release -a //查看系统发行版本
 ps -ef | grep name  //查看name 进程
 netstat   -anp | grep  portno（例如：netstat –apn | grep 80）
+netstat -tnlp
 ip route show
 -----------------------
 101.200.176.0/22 dev eth1  proto kernel  scope link  src 101.200.178.224 外网ip
