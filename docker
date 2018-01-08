@@ -45,6 +45,27 @@ sudo systemctl restart docker
 
 ```
 
+## 取消客户端https
+1, 服务端设置
+
+```
+{
+   "registry-mirrors": ["http://hub-mirror.c.163.com"],
+   "allow-nondistributable-artifacts" : ["192.168.0.2:5000"]
+}
+```
+
+2 。 客户端设置 
+
+```
+ { "insecure-registries":["10.26.240.153:5000"] }
+```
+3 for mac
+
+```
+右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中将
+```
+
 容器生命周期管理 —  `docker [run|start|stop|restart|kill|rm|pause|unpause]`
 容器操作运维 — `docker [ps|inspect|top|attach|events|logs|wait|export|port]`
 容器rootfs命令 — `docker [commit|cp|diff]`
