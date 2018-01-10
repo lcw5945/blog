@@ -106,6 +106,16 @@ ssh-keygen -C "name" 生成sshkey
 ~/.ssh 下 authorized_keys 是ssh连接的认证文件
 /etc/sysconfig/iptables  防火墙端口配置文件
 /etc/ssh/sshd.config  ssh配置文件  
+
+//ssh 连接 A 连接 B
+A  ssh-keygen -C "a@host.com" 生成sshkey
+B  ssh-keygen -C "b@host.com" 生成sshkey
+
+将A机 id_rsa.pub 内容复制到 B机 ~/.ssh/authorized_keys 文件内
+chomd 600 service sshd reload
+service sshd reload  //6
+systemctl reload sshd  //7 重启
+
 /etc/init.d  系统启动配置文件
 echo $LANG  查看系统语言
 /etc/sysconfig/i18n  系统语言配置文件
