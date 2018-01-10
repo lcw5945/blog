@@ -75,9 +75,29 @@ sudo systemctl restart docker
 
 构建镜像
 docker build -t 60.205.171.6:5000/centos-nvm:latest ./docker/centos-nvm/
+删除某个镜像
+docker rmi -f 60.205.171.6:5000/centos-nvm:lastest
 
 启动docker容器 
-docker run –name [CONTAINER_NAME] [CONTAINER_ID] 
+docker run –name [CONTAINER_NAME] [CONTAINER_ID]
+
+```
+docker run -dit -v /data/node:/data \
+--name node \
+-p 9010:9010 \
+-p 9011:9011 \
+-p 9012:9012 \
+-p 9013:9013 \
+-p 9015:9015 \
+-p 9016:9016 \
+-p 9017:9017 \
+-p 9018:9018 \
+-p 9019:9019 \
+-p 9020:9020 \
+10.26.240.153:5000/centos-nvm:latest
+```
+查看运行容器的信息
+docker inspect node
 查看容器运行状态 
 docker ps -a 
 
