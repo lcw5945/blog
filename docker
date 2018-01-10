@@ -73,6 +73,9 @@ sudo systemctl restart docker
 本地镜像管理 — `docker [images|rmi|tag|build|history|save|import]`
 其他命令 — `docker [info|version]`
 
+构建镜像
+docker build -t 60.205.171.6:5000/centos-nvm:latest ./docker/centos-nvm/
+
 启动docker容器 
 docker run –name [CONTAINER_NAME] [CONTAINER_ID] 
 查看容器运行状态 
