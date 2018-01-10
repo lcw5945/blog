@@ -72,3 +72,25 @@ sudo systemctl restart docker
 镜像仓库 — `docker [login|pull|push|search]`
 本地镜像管理 — `docker [images|rmi|tag|build|history|save|import]`
 其他命令 — `docker [info|version]`
+
+启动docker容器 
+docker run –name [CONTAINER_NAME] [CONTAINER_ID] 
+查看容器运行状态 
+docker ps -a 
+
+前台运行 并进入容器
+docker run -i -t [CONTAINER_NAME or CONTAINER_ID] /bin/bash
+后台运行 保持容器进程
+docker run -dit [CONTAINER_NAME or CONTAINER_ID]
+
+进入容器
+docker attach [CONTAINER_NAME or CONTAINER_ID]
+但是 exit 退出容器 容器也会自动停止
+docker exec -it [CONTAINER_NAME or CONTAINER_ID] /bin/bash 
+这样退出也不会停止容器
+docker exec -it e65158223866 /bin/bash
+
+获得容器信息
+docker inspect `container_name` | grep IPAddress
+动态映射端口
+iptables -t nat -A  DOCKER -p tcp --dport 8001 -j DNAT --to-destination 172.17.0.19:8000
