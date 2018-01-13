@@ -117,3 +117,12 @@ docker exec -it e65158223866 /bin/bash
 docker inspect `container_name` | grep IPAddress
 动态映射端口
 iptables -t nat -A  DOCKER -p tcp --dport 8001 -j DNAT --to-destination 172.17.0.19:8000
+查看日志
+docker logs -f -t --since="2018-01-31" --tail=10 edu_web_1
+```
+--since : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。
+-f : 查看实时日志
+-t : 查看日志产生的日期
+-tail=10 : 查看最后的10条日志。
+edu_web_1 : 容器名称
+```
