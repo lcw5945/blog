@@ -134,3 +134,7 @@ CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 docker run -p 6379:6379 -dti -v /home/lichunwei/app/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf --name dev-h5redis  10.27.76.19:5000/dev-h5redis redis-server /usr/local/etc/redis/redis.conf
 
 cat redis.conf | grep -v ^# | grep -v ^$
+
+brew install telnet
+
+telnet ip port //远程链接
