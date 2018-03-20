@@ -126,3 +126,11 @@ docker logs -f -t --since="2018-01-31" --tail=10 edu_web_1
 -tail=10 : 查看最后的10条日志。
 edu_web_1 : 容器名称
 ```
+## Reids
+FROM redis
+COPY redis.conf /usr/local/etc/redis/redis.conf
+CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+
+docker run -p 6379:6379 -dti -v /home/lichunwei/app/conf/redis/redis.conf:/usr/local/etc/redis/redis.conf --name dev-h5redis  10.27.76.19:5000/dev-h5redis redis-server /usr/local/etc/redis/redis.conf
+
+cat redis.conf | grep -v ^# | grep -v ^$
