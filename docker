@@ -127,6 +127,7 @@ docker logs -f -t --since="2018-01-31" --tail=10 edu_web_1
 edu_web_1 : 容器名称
 ```
 ## Reids
+
 FROM redis
 COPY redis.conf /usr/local/etc/redis/redis.conf
 CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
@@ -136,5 +137,11 @@ docker run -p 6379:6379 -dti -v /home/lichunwei/app/conf/redis/redis.conf:/usr/l
 cat redis.conf | grep -v ^# | grep -v ^$
 
 brew install telnet
+
+telnet ip port //远程链接
+
+redis.conf 说明
+requirepass 密码
+bind 绑定ip，如果多人链接还是注释掉，就可以任意ip链接
 
 telnet ip port //远程链接
