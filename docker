@@ -96,6 +96,14 @@ docker run -dit -v /data/node:/data \
 -p 9020:9020 \
 10.26.240.153:5000/centos-nvm:latest
 ```
+
+docker run -d -p 9000:9000 \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    --name portainer \
+    10.26.240.153:5000/portainer
+    
+    
 查看运行容器的信息
 docker inspect node
 查看容器运行状态 
