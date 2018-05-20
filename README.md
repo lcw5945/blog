@@ -133,6 +133,7 @@ uname -r  //查看系统版本
 lsb_release -a //查看系统发行版本
 ps -ef | grep name  //查看name 进程
 netstat   -anp | grep  portno（例如：netstat –apn | grep 80）
+tail -f /data/log/nginx/h5apidoc.log | grep '/mock/mixgw/' //实时过滤 '/mock/mixgw/'关键字的日志
 netstat -tnlp
 ip route show
 -----------------------
